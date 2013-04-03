@@ -2,15 +2,22 @@ package net.studyprojects.calcdespesas.model;
 
 import java.util.Calendar;
 
-//	@Entity
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class CartaoDeCredito {
 
-	// @Id
-	// @GeneratedValue
+	 @Id
+	 @GeneratedValue
 	private Long id;
 	private String titulo; // Ex.: Diners Club International Micha
 	private String descricao;
 	private Calendar dataDeExpiracao;
+	@Enumerated(EnumType.STRING)
 	private Bandeira bandeira; // Ex.: DINNERS
 
 	public Long getId() {

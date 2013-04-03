@@ -8,7 +8,11 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
  		
  		<class>net.studyprojects.calcdespesas.model.Usuario</class>
-
+		<class>net.studyprojects.calcdespesas.model.Parcela</class>
+		<class>net.studyprojects.calcdespesas.model.Fatura</class>
+		<class>net.studyprojects.calcdespesas.model.Compra</class>
+		<class>net.studyprojects.calcdespesas.model.CartaoDeCredito</class>
+		
 		<properties>
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>

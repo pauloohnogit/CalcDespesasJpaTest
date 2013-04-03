@@ -3,17 +3,21 @@ package net.studyprojects.calcdespesas.model;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Uma Parcela pertence a uma Compra. Navegabilidade: Compra -> Parcela
  * 
  * @author Paul
  * 
  */
-// @Entity
+@Entity
 public class Parcela {
 
-	// @Id
-	// @GeneratedValue
+	 @Id
+	 @GeneratedValue
 	private Long id;
 	private Calendar data;
 	private BigDecimal valor;

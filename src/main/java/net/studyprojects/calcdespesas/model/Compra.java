@@ -2,20 +2,32 @@ package net.studyprojects.calcdespesas.model;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class Compra {
 
 	// Compra: nome, descricao, data da compra, valor, no_parcelas (dado pelo
 	// list.size)
 
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String titulo;
 	private String descricao;
 	private Calendar data;
 	private BigDecimal valor;
+
 	// @OneToMany - 1 Compra : N Parcelas
-	private List<Parcela> parcelas;
+	// @OneToMany(mappedBy = "compra")
+	// private List<Parcela> parcelas;
+
+	@ManyToOne
+	private CartaoDeCredito cartao;
 
 	public Long getId() {
 		return id;
@@ -57,12 +69,20 @@ public class Compra {
 		this.valor = valor;
 	}
 
-	public List<Parcela> getParcelas() {
-		return parcelas;
+	// public List<Parcela> getParcelas() {
+	// return parcelas;
+	// }
+	//
+	// public void setParcelas(List<Parcela> parcelas) {
+	// this.parcelas = parcelas;
+	// }
+
+	public CartaoDeCredito getCartao() {
+		return cartao;
 	}
 
-	public void setParcelas(List<Parcela> parcelas) {
-		this.parcelas = parcelas;
+	public void setCartao(CartaoDeCredito cartao) {
+		this.cartao = cartao;
 	}
 
 }
