@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Fatura {
@@ -14,7 +16,10 @@ public class Fatura {
 	@Id
 	@GeneratedValue
 	private Long id;
+
+	@Temporal(TemporalType.DATE)
 	private Calendar dataDeVencimento;
+	@Temporal(TemporalType.DATE)
 	private Calendar dataDePagamento;
 	private BigDecimal valor; // Nao seria a soma das despesas?
 	private BigDecimal valorPago;

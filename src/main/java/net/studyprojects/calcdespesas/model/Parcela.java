@@ -6,6 +6,8 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Uma Parcela pertence a uma Compra. Navegabilidade: Compra -> Parcela
@@ -16,9 +18,10 @@ import javax.persistence.Id;
 @Entity
 public class Parcela {
 
-	 @Id
-	 @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	private BigDecimal valor;
 

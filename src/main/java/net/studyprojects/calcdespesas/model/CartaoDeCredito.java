@@ -7,16 +7,23 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class CartaoDeCredito {
 
-	 @Id
-	 @GeneratedValue
+	@Id
+	@GeneratedValue
 	private Long id;
+
 	private String titulo; // Ex.: Diners Club International Micha
+
 	private String descricao;
+
+	@Temporal(TemporalType.DATE)
 	private Calendar dataDeExpiracao;
+
 	@Enumerated(EnumType.STRING)
 	private Bandeira bandeira; // Ex.: DINNERS
 
