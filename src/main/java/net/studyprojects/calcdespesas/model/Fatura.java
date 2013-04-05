@@ -24,6 +24,8 @@ public class Fatura {
 	private BigDecimal valor; // Nao seria a soma das despesas?
 	private BigDecimal valorPago;
 
+	// Relationships
+
 	// @ManyToOne - N faturas : 1 cartao
 	@ManyToOne
 	private CartaoDeCredito cartaoDeCredito;
@@ -31,6 +33,8 @@ public class Fatura {
 	// @OneToMany - 1 fatura : N Despesas
 	// @OneToMany(mappedBy = "fatura")
 	// private List<Despesa> despesas;
+
+	// Getters & Setters
 
 	public Long getId() {
 		return id;

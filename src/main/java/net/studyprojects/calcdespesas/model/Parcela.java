@@ -6,6 +6,7 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,8 +26,10 @@ public class Parcela {
 	private Calendar data;
 	private BigDecimal valor;
 
-	// ManyToOne
-	// private Compra compra;
+	@ManyToOne
+	private Compra compra;
+
+	// Getters & Setters
 
 	public Long getId() {
 		return id;
@@ -50,6 +53,16 @@ public class Parcela {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	// Relationships
+
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
 	}
 
 }

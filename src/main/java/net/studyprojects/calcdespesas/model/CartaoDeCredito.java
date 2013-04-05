@@ -1,12 +1,15 @@
 package net.studyprojects.calcdespesas.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,6 +29,16 @@ public class CartaoDeCredito {
 
 	@Enumerated(EnumType.STRING)
 	private Bandeira bandeira; // Ex.: DINNERS
+
+	// Relationships
+
+	@OneToMany(mappedBy = "cartaoDeCredito")
+	private List<Fatura> faturas = new ArrayList<>();
+
+	@OneToMany(mappedBy = "cartaoDeCredito")
+	private List<Compra> compras = new ArrayList<>();
+
+	// Getters & Setters
 
 	public Long getId() {
 		return id;
@@ -65,6 +78,24 @@ public class CartaoDeCredito {
 
 	public void setBandeira(Bandeira bandeira) {
 		this.bandeira = bandeira;
+	}
+
+	// Relationships
+
+	public List<Fatura> getFaturas() {
+		return faturas;
+	}
+
+	public void setFaturas(List<Fatura> faturas) {
+		this.faturas = faturas;
+	}
+
+	public List<Compra> getCompras() {
+		return compras;
+	}
+
+	public void setCompras(List<Compra> compras) {
+		this.compras = compras;
 	}
 
 }

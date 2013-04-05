@@ -2,11 +2,13 @@ package net.studyprojects.calcdespesas.model;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -25,12 +27,16 @@ public class Compra {
 	private Calendar data;
 	private BigDecimal valor;
 
+	// Relationships
+
 	// @OneToMany - 1 Compra : N Parcelas
-	// @OneToMany(mappedBy = "compra")
-	// private List<Parcela> parcelas;
+	@OneToMany(mappedBy = "compra")
+	private List<Parcela> parcelas;
 
 	@ManyToOne
-	private CartaoDeCredito cartao;
+	private CartaoDeCredito cartaoDeCredito;
+
+	// Getters & Setters
 
 	public Long getId() {
 		return id;
@@ -72,20 +78,22 @@ public class Compra {
 		this.valor = valor;
 	}
 
-	// public List<Parcela> getParcelas() {
-	// return parcelas;
-	// }
-	//
-	// public void setParcelas(List<Parcela> parcelas) {
-	// this.parcelas = parcelas;
-	// }
+	// Relationships
 
-	public CartaoDeCredito getCartao() {
-		return cartao;
+	public List<Parcela> getParcelas() {
+		return parcelas;
 	}
 
-	public void setCartao(CartaoDeCredito cartao) {
-		this.cartao = cartao;
+	public void setParcelas(List<Parcela> parcelas) {
+		this.parcelas = parcelas;
+	}
+
+	public CartaoDeCredito getCartaoDeCredito() {
+		return cartaoDeCredito;
+	}
+
+	public void setCartaoDeCredito(CartaoDeCredito cartaoDeCredito) {
+		this.cartaoDeCredito = cartaoDeCredito;
 	}
 
 }
