@@ -12,6 +12,7 @@
 		<class>net.studyprojects.calcdespesas.model.Fatura</class>
 		<class>net.studyprojects.calcdespesas.model.Compra</class>
 		<class>net.studyprojects.calcdespesas.model.CartaoDeCredito</class>
+		<class>net.studyprojects.calcdespesas.model.Despesa</class>
 		
 		<properties>
 			
