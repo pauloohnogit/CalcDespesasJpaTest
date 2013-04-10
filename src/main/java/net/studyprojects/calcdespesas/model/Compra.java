@@ -1,6 +1,7 @@
 package net.studyprojects.calcdespesas.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -17,6 +18,20 @@ public class Compra {
 
 	// Compra: nome, descricao, data da compra, valor, no_parcelas (dado pelo
 	// list.size)
+
+	public Compra() {
+
+	}
+
+	// Construtor para o CompraBuilder
+	public Compra(String titulo, String descricao, Calendar data,
+			BigDecimal valor) {
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.data = data;
+		this.valor = valor;
+		this.parcelas = new ArrayList<>();
+	}
 
 	@Id
 	@GeneratedValue

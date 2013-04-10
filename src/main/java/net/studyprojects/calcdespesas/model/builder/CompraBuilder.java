@@ -3,11 +3,13 @@ package net.studyprojects.calcdespesas.model.builder;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import net.studyprojects.calcdespesas.model.Compra;
+
 public class CompraBuilder {
 
 	private String titulo;
 	private String descricao;
-	private Calendar dataDaCompra;
+	private Calendar data;
 	private BigDecimal valor;
 
 	public CompraBuilder comTitulo(String titulo) {
@@ -21,7 +23,7 @@ public class CompraBuilder {
 	}
 
 	public CompraBuilder comDataDaCompra(Calendar data) {
-		this.dataDaCompra = data;
+		this.data = data;
 		return this;
 	}
 
@@ -30,8 +32,8 @@ public class CompraBuilder {
 		return this;
 	}
 
-	// public Compra geraCompra() {
-	// return new Compra(titulo, descricao, dataDaCompra, valor);
-	// }
+	public Compra geraCompra() {
+		return new Compra(titulo, descricao, data, valor);
+	}
 
 }

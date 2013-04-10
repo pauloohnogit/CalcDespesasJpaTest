@@ -26,8 +26,21 @@ public class Parcela {
 	private Calendar data;
 	private BigDecimal valor;
 
+	// Relationships
+
 	@ManyToOne
 	private Compra compra;
+
+	public Parcela() {
+
+	}
+
+	public Parcela(Calendar data, BigDecimal valor, Compra compra) {
+		super();
+		this.data = data;
+		this.valor = valor;
+		this.compra = compra;
+	}
 
 	// Getters & Setters
 
