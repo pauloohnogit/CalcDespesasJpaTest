@@ -25,11 +25,12 @@ public class Compra {
 
 	// Construtor para o CompraBuilder
 	public Compra(String titulo, String descricao, Calendar data,
-			BigDecimal valor) {
+			BigDecimal valor, Integer numeroDeParcelas) {
 		this.titulo = titulo;
 		this.descricao = descricao;
 		this.data = data;
 		this.valor = valor;
+		this.numeroDeParcelas = numeroDeParcelas;
 		this.parcelas = new ArrayList<>();
 	}
 
@@ -41,6 +42,7 @@ public class Compra {
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	private BigDecimal valor;
+	private Integer numeroDeParcelas;
 
 	// Relationships
 
@@ -91,6 +93,14 @@ public class Compra {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public Integer getNumeroDeParcelas() {
+		return numeroDeParcelas;
+	}
+
+	public void setNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
 	}
 
 	// Relationships

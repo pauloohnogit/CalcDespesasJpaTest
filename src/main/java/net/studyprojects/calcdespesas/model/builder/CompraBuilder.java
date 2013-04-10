@@ -11,6 +11,7 @@ public class CompraBuilder {
 	private String descricao;
 	private Calendar data;
 	private BigDecimal valor;
+	private Integer numeroDeParcelas;
 
 	public CompraBuilder comTitulo(String titulo) {
 		this.titulo = titulo;
@@ -32,8 +33,13 @@ public class CompraBuilder {
 		return this;
 	}
 
+	public CompraBuilder comNumeroDeParcelas(Integer numeroDeParcelas) {
+		this.numeroDeParcelas = numeroDeParcelas;
+		return this;
+	}
+
 	public Compra geraCompra() {
-		return new Compra(titulo, descricao, data, valor);
+		return new Compra(titulo, descricao, data, valor, numeroDeParcelas);
 	}
 
 }
