@@ -36,7 +36,6 @@ public class Parcela {
 	}
 
 	public Parcela(Calendar data, BigDecimal valor, Compra compra) {
-		super();
 		this.data = data;
 		this.valor = valor;
 		this.compra = compra;
