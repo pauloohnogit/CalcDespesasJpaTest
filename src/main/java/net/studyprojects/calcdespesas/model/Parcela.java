@@ -75,6 +75,9 @@ public class Parcela {
 
 	public void setCompra(Compra compra) {
 		this.compra = compra;
+		if (!compra.getParcelas().contains(this)) {
+			compra.getParcelas().add(this);
+		}
 	}
 
 }

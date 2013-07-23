@@ -1,38 +1,54 @@
 package net.studyprojects.calcdespesas.model.factory;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
 import net.studyprojects.calcdespesas.model.Compra;
 import net.studyprojects.calcdespesas.model.Parcela;
+import net.studyprojects.calcdespesas.model.builder.ParcelaBuilder;
+
+import org.joda.time.DateTime;
 
 public class ParcelaFactory {
 
-	public Parcela constroiParcelaParaCompra(Compra compra) {
-		// TODO: falta implementar
-		return new Parcela();
-	}
-
 	public List<Parcela> constroiParcelasParaCompra(Compra compra) {
-		// TODO: falta implementar
+
+		List<Parcela> parcelas = new ArrayList<>();
 
 		for (int i = 0; i < compra.getNumeroDeParcelas(); i++) {
-			Parcela novaParcela = pbuilder
-					.comValor(getValorDeCadaParcela(compra2))
-					.comData(dataCompra.plusMonths(i).toGregorianCalendar())
+
+			DateTime dataDaCompra = new DateTime(compra.getData().getTime());
+
+			ParcelaBuilder pbuilder = new ParcelaBuilder();
+
+			Parcela parcela = pbuilder
+					.comValor(getValorDeCadaParcela(compra))
+					.comData(dataDaCompra.plusMonths(i).toGregorianCalendar())
 					.geraParcela();
-			compra2.getParcelas().add(novaParcela);
+
+			compra.addParcela(parcela);
+
+			parcelas.add(parcela);
+
 		}
 
-		return new ArrayList<Parcela>();
+		return parcelas;
 	}
 
 	private BigDecimal getValorDeCadaParcela(Compra compra) {
 
-		BigDecimal divisor = new BigDecimal(compra.getNumeroDeParcelas());
+		BigDecimal numerador = compra.getValor();
 
-		BigDecimal valorDaParcela = compra.getValor().divide(divisor);
+		BigDecimal denominador = new BigDecimal(compra.getNumeroDeParcelas());
+
+		// Determina a precisao (9 digitos) do calculo e o scale para o numero
+		// de casas decimais.
+		MathContext mc = new MathContext(9, RoundingMode.HALF_EVEN);
+		BigDecimal valorDaParcela = numerador.divide(denominador, mc).setScale(
+				2, RoundingMode.HALF_EVEN);
 
 		return valorDaParcela;
 	}

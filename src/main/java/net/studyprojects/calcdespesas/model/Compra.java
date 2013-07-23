@@ -121,4 +121,11 @@ public class Compra {
 		this.cartaoDeCredito = cartaoDeCredito;
 	}
 
+	public void addParcela(Parcela parcela) {
+		this.parcelas.add(parcela);
+		if (parcela.getCompra() != this) {
+			parcela.setCompra(this);
+		}
+	}
+
 }
