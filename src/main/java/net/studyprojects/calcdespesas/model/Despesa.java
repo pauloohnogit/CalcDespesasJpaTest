@@ -6,9 +6,16 @@ import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+/**
+ * Toda Despesa estara associada a uma parcela de uma compra. Isto permite que
+ * dada uma parcela, nao necessariamente ela sera lancada na fatura daquele mes.
+ * 
+ * @author paulo.nonaka
+ * 
+ */
 
 @Entity
 public class Despesa {
@@ -17,16 +24,27 @@ public class Despesa {
 	@GeneratedValue
 	private Long id;
 
-	private double fracao;
+	// private double fracao;
 
 	private BigDecimal valor;
 
 	@Temporal(TemporalType.DATE)
-	private Calendar data;
+	private Calendar dataDeLancamento;
 
 	// Relacionamentos
-	@OneToOne
-	private Parcela parcela;
+	// @OneToOne
+	// private Parcela parcela;
+
+	// Construtores
+	public Despesa() {
+
+	}
+
+	public Despesa(BigDecimal valor, Calendar dataDeLancamento, Parcela parcela) {
+		this.valor = valor;
+		this.dataDeLancamento = dataDeLancamento;
+		// this.parcela = parcela;
+	}
 
 	public Long getId() {
 		return id;
@@ -34,14 +52,6 @@ public class Despesa {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public double getFracao() {
-		return fracao;
-	}
-
-	public void setFracao(double fracao) {
-		this.fracao = fracao;
 	}
 
 	public BigDecimal getValor() {
@@ -52,20 +62,20 @@ public class Despesa {
 		this.valor = valor;
 	}
 
-	public Calendar getData() {
-		return data;
+	public Calendar getDataDeLancamento() {
+		return dataDeLancamento;
 	}
 
-	public void setData(Calendar data) {
-		this.data = data;
+	public void setDataDeLancamento(Calendar dataDeLancamento) {
+		this.dataDeLancamento = dataDeLancamento;
 	}
 
-	public Parcela getParcela() {
-		return parcela;
-	}
-
-	public void setParcela(Parcela parcela) {
-		this.parcela = parcela;
-	}
+	// public Parcela getParcela() {
+	// return parcela;
+	// }
+	//
+	// public void setParcela(Parcela parcela) {
+	// this.parcela = parcela;
+	// }
 
 }

@@ -27,6 +27,8 @@ public class ParcelaFactory {
 			Parcela parcela = pbuilder
 					.comValor(getValorDeCadaParcela(compra))
 					.comData(dataDaCompra.plusMonths(i).toGregorianCalendar())
+					.comDataDeLancamento(
+							dataDaCompra.plusMonths(i).toGregorianCalendar())
 					.geraParcela();
 
 			compra.addParcela(parcela);

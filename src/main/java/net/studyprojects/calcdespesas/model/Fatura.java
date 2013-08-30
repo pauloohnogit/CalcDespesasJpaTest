@@ -24,6 +24,22 @@ public class Fatura {
 	private BigDecimal valor; // Nao seria a soma das despesas?
 	private BigDecimal valorPago;
 
+	// Construtores
+
+	public Fatura() {
+
+	}
+
+	public Fatura(Calendar dataDeVencimento, Calendar dataDePagamento,
+			BigDecimal valor, BigDecimal valorPago,
+			CartaoDeCredito cartaoDeCredito) {
+		this.dataDeVencimento = dataDeVencimento;
+		this.dataDePagamento = dataDePagamento;
+		this.valor = valor;
+		this.valorPago = valorPago;
+		this.cartaoDeCredito = cartaoDeCredito;
+	}
+
 	// Relationships
 
 	// @ManyToOne - N faturas : 1 cartao
@@ -33,6 +49,10 @@ public class Fatura {
 	// @OneToMany - 1 fatura : N Despesas
 	// @OneToMany(mappedBy = "fatura")
 	// private List<Despesa> despesas;
+
+	// @OneToMany - 1 fatura : N Parcelas
+	// @OneToMany(mappedBy = "parcela")
+	// private List<Parcela> parcelas;
 
 	// Getters & Setters
 
@@ -83,6 +103,14 @@ public class Fatura {
 	public void setCartaoDeCredito(CartaoDeCredito cartaoDeCredito) {
 		this.cartaoDeCredito = cartaoDeCredito;
 	}
+
+	// public List<Parcela> getParcelas() {
+	// return parcelas;
+	// }
+	//
+	// public void setParcelas(List<Parcela> parcelas) {
+	// this.parcelas = parcelas;
+	// }
 
 	// public List<Despesa> getDespesas() {
 	// return despesas;

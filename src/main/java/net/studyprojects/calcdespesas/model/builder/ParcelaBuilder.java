@@ -11,6 +11,7 @@ public class ParcelaBuilder {
 	private Calendar data;
 	private BigDecimal valor;
 	private Compra compra;
+	private Calendar dataDeLancamento;
 
 	public ParcelaBuilder comData(Calendar data) {
 		this.data = data;
@@ -27,8 +28,13 @@ public class ParcelaBuilder {
 		return this;
 	}
 
+	public ParcelaBuilder comDataDeLancamento(Calendar dataDeLancamento) {
+		this.dataDeLancamento = dataDeLancamento;
+		return this;
+	}
+
 	public Parcela geraParcela() {
-		return new Parcela(data, valor, compra);
+		return new Parcela(data, valor, compra, dataDeLancamento);
 	}
 
 }

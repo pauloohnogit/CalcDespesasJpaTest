@@ -11,7 +11,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- * Uma Parcela pertence a uma Compra. Navegabilidade: Compra -> Parcela
+ * Uma Parcela pertence a uma Compra. Navegabilidade: Compra -> Parcela Foi
+ * criada a data de lancamento da parcela em determinada fatura. Pode acontecer
+ * de uma determinada parcela nao ter sido lancada no mes que deveria - ocorre
+ * no Diners.
  * 
  * @author Paul
  * 
@@ -24,6 +27,8 @@ public class Parcela {
 	private Long id;
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
+	@Temporal(TemporalType.DATE)
+	private Calendar dataDeLancamento;
 	private BigDecimal valor;
 
 	// Relationships
@@ -35,10 +40,12 @@ public class Parcela {
 
 	}
 
-	public Parcela(Calendar data, BigDecimal valor, Compra compra) {
+	public Parcela(Calendar data, BigDecimal valor, Compra compra,
+			Calendar dataDeLancamento) {
 		this.data = data;
 		this.valor = valor;
 		this.compra = compra;
+		this.dataDeLancamento = dataDeLancamento;
 	}
 
 	// Getters & Setters
@@ -65,6 +72,14 @@ public class Parcela {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
+	}
+
+	public Calendar getDataDeLancamento() {
+		return dataDeLancamento;
+	}
+
+	public void setDataDeLancamento(Calendar dataDeLancamento) {
+		this.dataDeLancamento = dataDeLancamento;
 	}
 
 	// Relationships
