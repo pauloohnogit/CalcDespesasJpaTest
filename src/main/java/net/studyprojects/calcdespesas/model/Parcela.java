@@ -30,11 +30,15 @@ public class Parcela {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataDeLancamento;
 	private BigDecimal valor;
+	// private boolean paga;
 
 	// Relationships
 
 	@ManyToOne
 	private Compra compra;
+
+	@ManyToOne
+	private Fatura fatura;
 
 	public Parcela() {
 
@@ -92,6 +96,17 @@ public class Parcela {
 		this.compra = compra;
 		if (!compra.getParcelas().contains(this)) {
 			compra.getParcelas().add(this);
+		}
+	}
+
+	public Fatura getFatura() {
+		return fatura;
+	}
+
+	public void setFatura(Fatura fatura) {
+		this.fatura = fatura;
+		if (!fatura.getParcelas().contains(this)) {
+			fatura.getParcelas().add(this);
 		}
 	}
 

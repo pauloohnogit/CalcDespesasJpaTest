@@ -2,11 +2,13 @@ package net.studyprojects.calcdespesas.model;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -51,8 +53,8 @@ public class Fatura {
 	// private List<Despesa> despesas;
 
 	// @OneToMany - 1 fatura : N Parcelas
-	// @OneToMany(mappedBy = "parcela")
-	// private List<Parcela> parcelas;
+	@OneToMany(mappedBy = "parcela")
+	private List<Parcela> parcelas;
 
 	// Getters & Setters
 
@@ -104,13 +106,13 @@ public class Fatura {
 		this.cartaoDeCredito = cartaoDeCredito;
 	}
 
-	// public List<Parcela> getParcelas() {
-	// return parcelas;
-	// }
-	//
-	// public void setParcelas(List<Parcela> parcelas) {
-	// this.parcelas = parcelas;
-	// }
+	public List<Parcela> getParcelas() {
+		return parcelas;
+	}
+
+	public void setParcelas(List<Parcela> parcelas) {
+		this.parcelas = parcelas;
+	}
 
 	// public List<Despesa> getDespesas() {
 	// return despesas;
