@@ -53,7 +53,7 @@ public class Fatura {
 	// private List<Despesa> despesas;
 
 	// @OneToMany - 1 fatura : N Parcelas
-	@OneToMany(mappedBy = "parcela")
+	@OneToMany(mappedBy = "fatura")
 	private List<Parcela> parcelas;
 
 	// Getters & Setters
