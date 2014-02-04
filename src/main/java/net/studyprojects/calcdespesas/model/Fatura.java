@@ -122,4 +122,6 @@ public class Fatura {
 	// this.despesas = despesas;
 	// }
 
+	// Negocio
+
 }
