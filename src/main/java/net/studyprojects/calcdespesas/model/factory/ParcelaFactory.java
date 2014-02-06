@@ -20,7 +20,7 @@ public class ParcelaFactory {
 
 		for (int i = 0; i < compra.getNumeroDeParcelas(); i++) {
 
-			DateTime dataDaCompra = new DateTime(compra.getData().getTime());
+			DateTime dataDaCompra = new DateTime(compra.getData().clone());
 
 			ParcelaBuilder pbuilder = new ParcelaBuilder();
 
